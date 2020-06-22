@@ -50,7 +50,6 @@ RUN apk add --no-cache supervisor
 RUN chown -R apache:apache /srv
 
 COPY etc /etc
-VOLUME /srv
 
 EXPOSE 22 80 3306 9001
 
