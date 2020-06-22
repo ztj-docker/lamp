@@ -1,14 +1,16 @@
 version: "3"
 services:
   lamp:
-    image: registry.cn-hongkong.aliyuncs.com/ztj1993/travis-ci:lamp
+    build:
+      context: .
+      dockerfile: Dockerfile
+    image: ztj1993/lamp:latest
     hostname: lamp
     container_name: lamp
     network_mode: custom
     restart: always
     environment:
       - ROOT_PASSWORD=${ROOT_PASSWORD:-123456}
-      - PROXY_PASSWORD=${PROXY_PASSWORD:-123456}
     volumes:
       - /etc/localtime:/etc/localtime:ro
     expose:
