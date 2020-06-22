@@ -3,12 +3,9 @@ FROM alpine:3.11.6
 LABEL maintainer="Ztj <ztj1993@gmail.com>"
 
 ENV ROOT_PASSWORD="123456"
-ENV PROXY_PASSWORD="123456"
 
 ADD https://phar.phpunit.de/phpunit.phar /usr/local/bin/phpunit
 RUN chmod +x /usr/local/bin/phpunit
-ADD https://github.com/txthinking/brook/releases/download/v20200502/brook_linux_amd64 /usr/local/bin/brook
-RUN chmod +x /usr/local/bin/brook
 
 RUN apk add --no-cache git openssh-server curl
 
@@ -55,6 +52,6 @@ RUN chown -R apache:apache /srv
 COPY etc /etc
 VOLUME /srv
 
-EXPOSE 22 80 3306 8090 9001
+EXPOSE 22 80 3306 9001
 
 CMD ["supervisord", "-c", "/etc/supervisord.conf", "--nodaemon"]
