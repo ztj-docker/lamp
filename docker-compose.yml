@@ -1,0 +1,25 @@
+version: "3"
+services:
+  lamp:
+    image: registry.cn-hongkong.aliyuncs.com/ztj1993/travis-ci:lamp
+    hostname: lamp
+    container_name: lamp
+    network_mode: custom
+    restart: always
+    environment:
+      - ROOT_PASSWORD=${ROOT_PASSWORD:-123456}
+      - PROXY_PASSWORD=${PROXY_PASSWORD:-123456}
+    volumes:
+      - /etc/localtime:/etc/localtime:ro
+    expose:
+      - 22/tcp
+      - 80/tcp
+      - 3306/tcp
+      - 8090/tcp
+      - 9001/tcp
+    ports:
+      - 22/tcp
+      - 80/tcp
+      - 3306/tcp
+      - 8090/tcp
+      - 9001/tcp
